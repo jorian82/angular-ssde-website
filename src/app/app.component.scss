@@ -1,0 +1,41 @@
+$header-bg: #ffffff;
+$header-color: #000033;
+$footer-bg: #810081;
+$footer-color: #ffffff;
+$content-bg: #ffffff;
+$content-color1: #23b423;
+$content-color2: #810081;
+$content-color3: #000033;
+$content-color4: #e60000;
+
+.header {
+    position: fixed;
+    min-height: 80px;
+    width: 100%;
+    padding: 15px 5%;
+    top: 0px;
+    color: $header-color;
+    background: $header-bg;
+    z-index: 10;
+}
+
+.content {
+    background: $content-bg;
+    position: relative;
+    width: 90%;
+    margin: auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    z-index: 0;
+}
+
+.footer {
+    background: $footer-bg;
+    color: $footer-color;
+    position: fixed;
+    min-height: 50px;
+    width: 100%;
+    bottom: 0px;
+    padding: 15px 5%;
+    z-index: 10;
+}

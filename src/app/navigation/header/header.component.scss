@@ -1,0 +1,23 @@
+.nav-link {
+    cursor: pointer;
+
+}
+
+.nav-item {
+
+    &:hover {
+        border-bottom: 2px solid;
+    }
+
+    &-active{
+        border-bottom: 2px solid;
+    }
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}

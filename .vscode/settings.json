@@ -1,0 +1,5 @@
+{
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.external.osxExec": "ïTerm2.app",
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+}
