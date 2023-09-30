@@ -5,3 +5,13 @@
 .left {
     float: left;
 }
+
+a {
+    text-decoration: none;
+    color: #fff;
+
+    &:hover {
+        text-decoration: none;
+        cursor: pointer;
+    }
+}

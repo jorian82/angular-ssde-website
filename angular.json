@@ -31,12 +31,9 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles/partials/common.scss",
               "src/styles.scss"
             ],
-            "scripts": [
-              "node_modules/fontawesome/index.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {

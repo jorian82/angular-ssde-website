@@ -1,1 +1,19 @@
-<p>contact works!</p>
+<div class="container-fluid title font-green text-centered">
+    <h1 class="display-4">Quieres un presupuesto?</h1>
+</div>
+<div class="container-fluid title font-green text-centered">
+    <div class="font-green title text-centered">
+        Estamos aquí para ti, contáctanos
+    </div>
+</div>
+<div class="row">
+    <div *ngFor="let item of itemList" class="col-md-3 col-xs-12 {{item.color}}">
+        <div class="row">
+            <div class="col-12 text-centered {{item.imagen}}"></div>
+            <ul class="list-group list-group-flush col-12 ">
+                <li class="list-group-item text-centered">{{item.etiqueta}}</li>
+                <li *ngFor="let labels of item.texto" class="list-group-item text-centered font-blue">{{labels}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

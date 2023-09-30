@@ -39,3 +39,63 @@ $content-color4: #e60000;
     padding: 15px 5%;
     z-index: 10;
 }
+
+.text-centered {
+    text-align: center;
+}
+
+.font-green {
+    color: $content-color1;
+}
+
+.font-purple {
+    color: $content-color2;
+}
+
+.font-blue {
+    color: $content-color3;
+}
+
+.font-red {
+    color: $content-color4;
+}
+
+.envelope {
+    mask: url('../assets/icons/envelope.svg') no-repeat 50% 50%;
+    -webkit-mask: url('../assets/icons/envelope.svg') no-repeat 50% 50%;
+    background-color: $content-color3;
+    width: 70px;
+    height: 70px;
+}
+
+.cellphone {
+    mask: url('../assets/icons/cellphone.svg') no-repeat 50% 50%;
+    -webkit-mask: url('../assets/icons/cellphone.svg') no-repeat 50% 50%;
+    background-color: $content-color2;
+    width: 70px;
+    height: 70px;
+}
+
+.message {
+    mask: url('../assets/icons/mensaje.svg') no-repeat 50% 50%;
+    -webkit-mask: url('../assets/icons/mensaje.svg') no-repeat 50% 50%;
+    background-color: $content-color4;
+    width: 70px;
+    height: 70px;
+}
+
+.whatsapp {
+    mask: url('../assets/icons/whatsapp.svg') no-repeat 50% 50%;
+    -webkit-mask: url('../assets/icons/whatsapp.svg') no-repeat 50% 50%;
+    background-color: $content-color1;
+    width: 70px;
+    height: 70px;
+}
+
+.title {
+    padding: 40px;
+}
+
+svg {
+    fill: inherit;
+}
