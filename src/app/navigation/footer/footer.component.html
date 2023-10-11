@@ -1,15 +1,24 @@
 <div class="left">
-    <span>
-        <a href="">
-            <fa-icon [icon]="icon_G"></fa-icon>&nbsp;&nbsp;|&nbsp;&nbsp;
-        </a>
-        <a href="https://twitter.com/jorian1">
-            <fa-icon [icon]="icon_X"></fa-icon>&nbsp;&nbsp;|&nbsp;&nbsp;
-        </a>
-        <a href="https://www.facebook.com/profile.php?id=61552015615849">
-            <fa-icon [icon]="icon_F"></fa-icon>
-        </a>
-    </span>
+  <div class="row">
+    <div class="col-md-1 col-sm-12">
+      <a href="">
+        <div class="fa-linkedin"></div>
+        <!--            <fa-icon [icon]="icon_G"></fa-icon>&nbsp;&nbsp;|&nbsp;&nbsp;-->
+      </a>
+    </div>
+    <div class="col-md-1 col-sm-12">
+      <a href="https://twitter.com/jorian1">
+        <div class="fa-twitter"></div>
+        <!--            <fa-icon [icon]="icon_X"></fa-icon>&nbsp;&nbsp;|&nbsp;&nbsp;-->
+      </a>
+    </div>
+    <div class="col-md-1 col-sm-12">
+      <a href="https://www.facebook.com/profile.php?id=61552015615849">
+        <div class="fa-facebook"></div>
+        <!--            <fa-icon [icon]="icon_F"></fa-icon>-->
+      </a>
+    </div>
+  </div>
 </div>
 <div class="right">
     <span><fa-icon [icon]="icon_Copyright"></fa-icon> {{ copyrightDate | date: 'yyyy'}}&nbsp;&nbsp;|&nbsp;&nbsp;Smart Software Development for Enterprises (SSDE)</span>

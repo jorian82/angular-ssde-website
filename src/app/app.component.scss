@@ -92,6 +92,34 @@ $content-color4: #e60000;
     height: 70px;
 }
 
+.fa-facebook {
+  mask: url('../assets/icons/facebook.svg') no-repeat 50% 50%;
+  -webkit-mask: url('../assets/icons/facebook.svg') no-repeat 50% 50%;
+  background-color: $footer-color;
+  width: 20px;
+  height: 20px;
+}
+
+.fa-linkedin {
+  mask: url('../assets/icons/linkedin.svg') no-repeat 50% 50%;
+  -webkit-mask: url('../assets/icons/linkedin.svg') no-repeat 50% 50%;
+  background-color: $footer-color;
+  width: 20px;
+  height: 20px;
+}
+
+.fa-twitter {
+  mask: url('../assets/icons/x.svg') no-repeat 50% 50%;
+  -webkit-mask: url('../assets/icons/x.svg') no-repeat 50% 50%;
+  background-color: $footer-color;
+  width: 20px;
+  height: 20px;
+}
+
+.list-group {
+  padding-left: 15px;
+}
+
 .title {
     padding: 40px;
 }
