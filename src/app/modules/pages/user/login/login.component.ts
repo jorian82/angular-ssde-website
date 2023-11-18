@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoaderService } from 'src/app/services/loader.service';
@@ -24,7 +25,8 @@ export class LoginComponent {
         private authService: AuthService, 
         private router: Router, 
         private tokenStorage: TokenStorageService,
-        private loaderService: LoaderService) {
+        private loaderService: LoaderService,
+        private _snackBar: MatSnackBar) {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['',Validators.required]
@@ -36,7 +38,7 @@ export class LoginComponent {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
-      this.router.navigateByUrl('/search');
+      this.router.navigateByUrl('/');
     }
   }
 
@@ -45,6 +47,7 @@ export class LoginComponent {
     this.loaderService.setLoading(true);
     this.authService.login(val.username, val.password).subscribe({
       next: data => {
+        console.log('login successful ', data);
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
         this.isLoginFailed = false;
@@ -57,6 +60,7 @@ export class LoginComponent {
         this.errorMessage = err.error.message;
         this.loaderService.setLoading(false);
         this.isLoginFailed = true;
+        this._snackBar.open(err.error.message, 'X');
       }
     });
   }

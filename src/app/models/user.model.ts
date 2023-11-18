@@ -23,5 +23,5 @@ export interface NewUser {
   lastName: string;
   email: string;
   password: string;
-  roles: number[];
+  roles: string[];
 }

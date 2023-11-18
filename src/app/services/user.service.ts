@@ -13,6 +13,8 @@ export class UserService {
   // users: User[] = [];
   onCreated: Subject<string> = new Subject<string>();
   onError: Subject<string> = new Subject<string>();
+  onLogedOut: Subject<string> = new Subject<string>();
+  loginState: Subject<boolean> = new Subject<boolean>();
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar) {}
 
@@ -44,8 +46,8 @@ export class UserService {
     })
   }
 
-  fetchById(id: number) {
-    return this.http.get<User>(API_URL+'users/'+id, httpOptions)
+  fetchById(id: string) {
+    return this.http.get<User>(API_URL+'user/'+id, httpOptions)
     .pipe(
       map( response => this.setUser(response))
     );
@@ -59,7 +61,7 @@ export class UserService {
   }
 
   getProfile(username: string) {
-    return this.http.post<User>(API_URL+'users/profile',{ username }, httpOptions)
+    return this.http.post<User>(API_URL+'user/profile',{ username }, httpOptions)
     .pipe(
       map( response => this.setUser(response) )
     );
@@ -67,7 +69,7 @@ export class UserService {
 
   fetchUsers() {
     let users: User[] = [];
-    return this.http.get<User[]>(API_URL+'users', httpOptions)
+    return this.http.get<User[]>(API_URL+'user/all', httpOptions)
     .pipe(
       map( response => {
         let data = JSON.parse(JSON.stringify(response)).data;
@@ -82,4 +84,12 @@ export class UserService {
       })
     );
   };
+
+  logOut(username: string) {
+    console.log('user: ', username);
+    return this.http.post(API_URL + 'auth/signout', { username: username }, httpOptions)
+    .pipe(
+      map( response => JSON.parse(JSON.stringify(response)) )
+    )
+  }
 }

@@ -12,20 +12,23 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
         let user = this.tokenService.getUser();
-        // console.log('roles: ',user.roles);
+        // console.log('user: ', user);
         if(user) {
             this.userService.verifyAccess().subscribe({
                 next: resp => {
                     return true;
                 },
                 error: err => {
+                    console.log('authentication guard: ',err);
                     this.tokenService.signOut();
                     this.router.navigateByUrl('/');
+                    this.userService.loginState.next(false);
                     return false;
                 }
             });
         } else {
             this.tokenService.signOut();
+            this.userService.loginState.next(false);
             return false;
         }
         return true;      

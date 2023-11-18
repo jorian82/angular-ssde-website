@@ -25,7 +25,7 @@ const contactos: Contacto[] = [
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss','../../app.component.scss']
+  styleUrls: ['./contact.component.scss','../../../app.component.scss']
 })
 export class ContactComponent {
   itemList: Contacto[] = contactos;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { API_URL, httpOptions } from '../helpers/constants';
 
 @Injectable({
@@ -22,6 +22,12 @@ export class AuthService {
       username,
       email,
       password
+    }, httpOptions);
+  }
+
+  refreshToken( refreshToken: string ): Observable<any> {
+    return this.http.post(API_URL + 'auth/refreshtoken', {
+      refreshToken
     }, httpOptions);
   }
 }

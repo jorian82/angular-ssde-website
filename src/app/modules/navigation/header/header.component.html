@@ -20,9 +20,19 @@
                 <fa-icon [icon]="icon_About"></fa-icon> | Qui&eacute;n soy?
             </span>
         </li>
-        <li class="nav-item">
-            <span class="nav-link" routerLink="signin" routerLinkActive="['nav-item-active']">
-                <fa-icon [icon]="icon_Login"></fa-icon> | Qui&eacute;n soy?
+        <li class="nav-item" *ngIf="!isLoggedIn">
+            <span class="nav-link" routerLink="login" routerLinkActive="['nav-item-active']">
+                <fa-icon [icon]="icon_Login"></fa-icon> | Login
+            </span>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+            <span class="nav-link" routerLink="profile" routerLinkActive="['nav-item-active']">
+                <fa-icon [icon]="icon_Login"></fa-icon> | Profile
+            </span>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+            <span class="nav-link" (click)="logout()">
+                <fa-icon [icon]="icon_Logout"></fa-icon> | Log Out
             </span>
         </li>
     </ul>
