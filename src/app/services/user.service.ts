@@ -54,16 +54,21 @@ export class UserService {
   }
 
   setUser(response:any): User {
-    let data = JSON.parse(JSON.stringify(response)).data;
+    let data = JSON.parse(JSON.stringify(response));
     let roles: Role[] = [];
+    console.log('populating profile data...', data);
     data.roles.forEach( (rol:any) => roles.push( new Role(rol.name,rol.id) ));
+    console.log('returning user: ', roles);
     return new User(data.username, data.fullName, data.email, roles, data.id);
   }
 
   getProfile(username: string) {
     return this.http.post<User>(API_URL+'user/profile',{ username }, httpOptions)
     .pipe(
-      map( response => this.setUser(response) )
+      map( response => {
+        console.log('in service: ',response);
+        return this.setUser(response)
+      })
     );
   }
 

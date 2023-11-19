@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   hide: boolean = true;
   loginForm: FormGroup;// = null;
   isLoggedIn = false;
@@ -21,9 +21,9 @@ export class LoginComponent {
 
 
   constructor(
-        private fb: FormBuilder, 
-        private authService: AuthService, 
-        private router: Router, 
+        private fb: FormBuilder,
+        private authService: AuthService,
+        private router: Router,
         private tokenStorage: TokenStorageService,
         private loaderService: LoaderService,
         private _snackBar: MatSnackBar) {
@@ -38,7 +38,7 @@ export class LoginComponent {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/').then(r => null);
     }
   }
 

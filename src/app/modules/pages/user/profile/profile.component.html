@@ -1,1 +1,4 @@
 <p>profile works!</p>
+<pre *ngIf="isLogged" class="font-blue">{{ user | json }}</pre>
+<pre *ngIf="hasErrors" class="font-red">{{ message | json }}</pre>
+<app-loader-spinner></app-loader-spinner>

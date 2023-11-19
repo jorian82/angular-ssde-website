@@ -5,7 +5,7 @@ export class User {
   username: string;
   fullName: string;
   email: string;
-  roles: Role[]
+  roles: Role[];
 
   public constructor(user: string, full: string, email: string, roles: Role[], id: number) {
     this.id = id;
