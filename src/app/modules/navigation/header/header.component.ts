@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { faHouse, faEnvelope, faUser, faCircleInfo, faL, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faEnvelope, faUser, faCircleInfo, faRightFromBracket, faBlog } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoaderService } from 'src/app/services/loader.service';
@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
   icon_Home = faHouse;
   icon_Contact = faEnvelope;
   icon_About = faCircleInfo;
+  icon_Blog  = faBlog;
   icon_Login = faUser;
   icon_Logout = faRightFromBracket;
 
@@ -27,7 +28,6 @@ export class HeaderComponent implements OnInit, OnDestroy{
   isLoggedIn: boolean = false;
 
   constructor(
-    private authService: AuthService, 
     private router: Router, 
     private tokenStorage: TokenStorageService,
     private loaderService: LoaderService,
@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
     console.log('Logging out...');
     const user = this.tokenStorage.getUser()
     this.logoutSubscription = this.userService.logOut(user.username).subscribe( resp => {
-      // this._snackBar.open('User logged out succesfully','X');
+      this._snackBar.open('User logged out succesfully','X');
       this.isLoggedIn = false;
     });
     this.tokenStorage.signOut();

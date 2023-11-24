@@ -18,6 +18,8 @@ import { ListComponent } from './modules/pages/user/posts/list/list.component';
 import { LoaderSpinnerComponent } from './modules/common/loader-spinner/loader-spinner.component';
 
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -28,6 +30,7 @@ import { AdminGuard } from './helpers/admin.guard';
 import { CreatorGuard } from './helpers/creator.guard';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -53,12 +56,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
+    MatListModule,
+    MatCardModule,
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
     BrowserAnimationsModule
   ],
-  providers: [authInterceptorProviders, AuthGuard, AdminGuard, CreatorGuard],
+  providers: [
+    authInterceptorProviders, AuthGuard, AdminGuard, CreatorGuard,
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000}
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

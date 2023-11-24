@@ -30,7 +30,9 @@
               "src/assets"
             ],
             "styles": [
-              "@angular/material/prebuilt-themes/purple-green.css",
+              // "@angular/material/prebuilt-themes/purple-green.css",
+              // "https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48IzIzYjQyMyIsIj9lcjwjYmRlOWJkIiwiO2VyPCMxNTljMTV$LCIlPmBePCNlNWU1ZTUiLCI~ZXI8I2Y3ZjdmNyIsIjtlcjwjZGFkYWRhfiwid2Fybj5gXjwjODEwMDgxIiwiP2VyPCNkOWIzZDkiLCI7ZXI8IzY0MDA2NH4sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZmFmYWZhIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMyYzJjMmN$LCJmb250cz5bYEA8KC00fixgQDwoLTN$LGBAPCgtMn4sYEA8KC0xfixgQDxoZWFkbGluZX4sYEA8dGl0bGV$LGBAPHN1YiktMn4sYEA8c3ViKS0xfixgQDxib2R5LTJ$LGBAPGJvZHktMX4sYEA8YnV0dG9ufixgQDxjYXB0aW9ufixgQDxpbnB1dCIsInNpemU$bnVsbH1dLCJpY29uczxPdXRsaW5lZCIsIj9uZXNzPnRydWUsInZlcnNpb24$MTN9",
+              "src/app/styles/ssde.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
@@ -103,5 +105,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

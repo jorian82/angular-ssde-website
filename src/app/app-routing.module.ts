@@ -11,17 +11,18 @@ import { EditComponent } from './modules/pages/user/posts/edit/edit.component';
 import { CreatorGuard } from './helpers/creator.guard';
 import { ListComponent } from './modules/pages/user/posts/list/list.component';
 import { CommentComponent } from './modules/pages/user/posts/comment/comment.component';
+import { BlogComponent } from './modules/pages/blog/blog.component';
 
 const routes: Routes = [
   { path: '',          component: WelcomeComponent  },
   { path: 'contact',   component: ContactComponent  },
   { path: 'about',     component: AboutComponent    },
   { path: 'login',     component: LoginComponent    },
-  { path: 'profile',   component: ProfileComponent, canActivate: [AuthGuard]    },
-  { path: 'posts',     component: ListComponent,    canActivate: [AuthGuard], children: [
+  { path: 'posts',     component: ListComponent,    children: [
     { path: 'comment',    component: CommentComponent,   canActivate: [AuthGuard] },
     { path: 'edit',       component: EditComponent,      canActivate: [CreatorGuard] }
   ]},
+  { path: 'profile',   component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**',        redirectTo: 'not-found'}
 ];

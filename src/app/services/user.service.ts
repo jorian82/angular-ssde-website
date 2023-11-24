@@ -16,7 +16,7 @@ export class UserService {
   onLogedOut: Subject<string> = new Subject<string>();
   loginState: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private http: HttpClient, private _snackBar: MatSnackBar) {}
+  constructor(private http: HttpClient) {}
 
   verifyAccess() {
     return this.http.get(API_URL + 'user/test/user', httpOptions);
@@ -56,9 +56,7 @@ export class UserService {
   setUser(response:any): User {
     let data = JSON.parse(JSON.stringify(response));
     let roles: Role[] = [];
-    console.log('populating profile data...', data);
     data.roles.forEach( (rol:any) => roles.push( new Role(rol.name,rol.id) ));
-    console.log('returning user: ', roles);
     return new User(data.username, data.fullName, data.email, roles, data.id);
   }
 
@@ -66,7 +64,6 @@ export class UserService {
     return this.http.post<User>(API_URL+'user/profile',{ username }, httpOptions)
     .pipe(
       map( response => {
-        console.log('in service: ',response);
         return this.setUser(response)
       })
     );

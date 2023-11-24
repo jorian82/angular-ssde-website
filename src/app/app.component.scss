@@ -44,6 +44,10 @@ $content-color4: #e60000;
     text-align: center;
 }
 
+.font-white {
+    color: $footer-color;
+}
+
 .font-green {
     color: $content-color1;
 }
@@ -58,6 +62,10 @@ $content-color4: #e60000;
 
 .font-red {
     color: $content-color4;
+}
+
+.mat-mdc-card {
+    background-color: eee !important;
 }
 
 .envelope {

@@ -7,7 +7,7 @@ export class User {
   email: string;
   roles: Role[];
 
-  public constructor(user: string, full: string, email: string, roles: Role[], id: number) {
+  public constructor(user: string='', full: string='', email: string='', roles: Role[] = [], id: number=0) {
     this.id = id;
     this.username = user;
     this.fullName = full;

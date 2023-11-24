@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit{
         this.errorMessage = err.error.message;
         this.loaderService.setLoading(false);
         this.isLoginFailed = true;
-        this._snackBar.open(err.error.message, 'X');
+        this._snackBar.open(this.errorMessage, 'X');
       }
     });
   }
