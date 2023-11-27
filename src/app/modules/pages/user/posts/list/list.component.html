@@ -5,66 +5,69 @@
     </button>
 </div>
 
-@for (post of postList; track post) {
-    <div class="card-container">
-        <div class="row">
-            <div class="col-md-2 col-sx-12 text-centered">
-                <mat-card>
-                    <mat-card-content>
-                        {{post.author.username}}<br>
-                        <fa-icon class="font-purple avatar" [icon]="icon_user"></fa-icon><br>
-                        {{post.author.fullName}}<br>
-                        {{post.author.roles[0].name}}
-                        <span>
-                            <br><br><br><br>
-                        </span>
+<div class="card-container">
+    <div class="row" *ngFor="let post of postList">
+        <div class="col-md-2 col-sx-12 text-centered">
+            <mat-card>
+                <mat-card-content>
+                    {{post.author.username}}<br>
+                    <fa-icon class="font-purple avatar" [icon]="icon_user"></fa-icon><br>
+                    {{post.author.fullName}}<br>
+                    {{post.author.roles[0].name}}
+                    <span>
+                        <br><br><br><br>
+                    </span>
+                </mat-card-content>
+                <mat-card-footer
+                >
+                    <span class="font-purple">Created {{post.createdAt | date: 'dd/MM/yyyy'}}</span><br>
+                    <span class="font-purple">Updated {{post.updatedAt | date: 'dd/MM/yyyy'}}</span>
+                </mat-card-footer>
+            </mat-card>
+        </div>
+        <div class="col-md-10 col-sx-12">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title class="font-green display-7">{{post.title}}</mat-card-title>
+                    <!-- <mat-card-subtitle>Start</mat-card-subtitle> -->
+                </mat-card-header>
+                <mat-card-content>
+                    <p class="font-blue display-9">{{post.content}}</p>
+                    <mat-divider></mat-divider>
                     </mat-card-content>
-                    <mat-card-footer align="end">
-                        <span class="font-purple">Created {{post.createdAt | date: 'dd/MM/yyyy'}}</span><br>
-                        <span class="font-purple">Updated {{post.updatedAt | date: 'dd/MM/yyyy'}}</span>
-                    </mat-card-footer>
-                </mat-card>
-            </div>
-            <div class="col-md-10 col-sx-12">
-                <mat-card>
-                    <mat-card-header>
-                        <mat-card-title class="font-green display-7">{{post.title}}</mat-card-title>
-                        <!-- <mat-card-subtitle>Start</mat-card-subtitle> -->
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p class="font-blue display-9">{{post.content}}</p>
-                        <mat-divider></mat-divider>
-                        </mat-card-content>            
-                    <mat-card-actions>
-                        <button mat-raised-button>
-                            <fa-icon class="font-green"  [icon]="icon_message"></fa-icon>
-                            <span class="font-green"> {{post.comments.length}}</span>
-                        </button>
-                        <button mat-raised-button>
-                            <fa-icon class="font-blue"   [icon]="icon_like"></fa-icon>
-                            <span class="font-blue"> Like</span>
-                        </button>
-                        <button mat-raised-button>
-                            <fa-icon class="font-purple" [icon]="icon_edit"></fa-icon>
-                            <span class="font-purple"> Edit Post</span>
-                        </button>
-                        <button mat-raised-button>
-                            <fa-icon class="font-red"    [icon]="icon_fav"></fa-icon>
-                            <span class="font-red"> Favorite</span>
-                        </button>
-                        <button mat-raised-button>
-                            <fa-icon class="font-green"  [icon]="icon_new"></fa-icon>
-                            <span class="font-green"> Add Comment</span>
-                        </button>
-                        <button mat-raised-button>
-                            <fa-icon class=""            [icon]="icon_delete"></fa-icon>
-                            <span class=""> Delete Post</span>
-                        </button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
+                <mat-card-actions>
+                    <button mat-flat-button (click)="showComments(post.comments)">
+                        <fa-icon class="font-green"  [icon]="icon_message" ></fa-icon>
+                        <span class="font-green"> {{post.comments.length}}</span>
+                    </button>
+                    <span  *ngIf="isLoggedIn">
+                      <button mat-flat-button (click)="likePost(post)">
+                          <fa-icon class="font-blue"   [icon]="icon_like"   ></fa-icon>
+                          <span class="font-blue"> Like</span>
+                      </button>
+                      <button mat-flat-button (click)="markPost(post)">
+                        <fa-icon class="font-red"    [icon]="icon_fav"    ></fa-icon>
+                        <span class="font-red"> Favorite</span>
+                      </button>
+                      <button mat-flat-button (click)="addComment(post)">
+                          <fa-icon class="font-green"  [icon]="icon_new"    ></fa-icon>
+                          <span class="font-green"> Add Comment</span>
+                      </button>
+                    </span>
+                    <span *ngIf="hasPermissions(post.author)">
+                      <button mat-flat-button (click)="editPost(post)">
+                          <fa-icon class="font-purple" [icon]="icon_edit"  ></fa-icon>
+                          <span class="font-purple"> Edit Post</span>
+                      </button>
+                      <button mat-flat-button (click)="deletePost(post)">
+                          <fa-icon class=""            [icon]="icon_delete" ></fa-icon>
+                          <span class=""> Delete Post</span>
+                      </button>
+                    </span>
+                </mat-card-actions>
+            </mat-card>
         </div>
     </div>
-}    
+</div>
 
 <app-loader-spinner></app-loader-spinner>

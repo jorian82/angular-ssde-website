@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { faFacebookF, faGooglePlus, faLinkedinIn, faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faSquareFacebook, faLinkedin, faSquareXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faCopyright } from '@fortawesome/free-solid-svg-icons';
-import { faF, faG, faX } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -10,10 +9,9 @@ import { faF, faG, faX } from '@fortawesome/free-solid-svg-icons';
 })
 export class FooterComponent {
   icon_Copyright = faCopyright;
-  icon_F = faFacebookF;
-  icon_G = faGooglePlus;
-  icon_X = faXTwitter;
-  icon_LI = faLinkedinIn;
-  
+  icon_F = faSquareFacebook;
+  icon_X = faSquareXTwitter;
+  icon_LI = faLinkedin;
+
   copyrightDate = new Date();
 }

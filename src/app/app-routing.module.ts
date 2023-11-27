@@ -11,7 +11,6 @@ import { EditComponent } from './modules/pages/user/posts/edit/edit.component';
 import { CreatorGuard } from './helpers/creator.guard';
 import { ListComponent } from './modules/pages/user/posts/list/list.component';
 import { CommentComponent } from './modules/pages/user/posts/comment/comment.component';
-import { BlogComponent } from './modules/pages/blog/blog.component';
 
 const routes: Routes = [
   { path: '',          component: WelcomeComponent  },

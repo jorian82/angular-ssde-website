@@ -15,6 +15,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class ListComponent implements OnInit, OnDestroy {
 
+  isLoggedIn: boolean = false;
   postList: Post[] = [];
   postSubs: Subscription = new Subscription();
 
@@ -30,6 +31,7 @@ export class ListComponent implements OnInit, OnDestroy {
   constructor( private tokenStorage: TokenStorageService, private postService: PostService, private loader: LoaderService, private _snack: MatSnackBar) {}
 
   ngOnInit(): void {
+    this.isLoggedIn = this.tokenStorage.getToken()!==null;
     this.getPosts();
   }
 
@@ -47,6 +49,36 @@ export class ListComponent implements OnInit, OnDestroy {
     });
   }
 
+  hasPermissions(author: User): boolean {
+      const loggedUser = this.tokenStorage.getUser();
+      console.log('author: ', author.username);
+      console.log('user: ',loggedUser.username);
+      return loggedUser.username == author.username;
+  }
+
+  showComments(comments: Comment[]) {
+    console.log("Print comments: ", comments);
+  }
+
+  likePost(post: Post) {
+    console.log('Liked ', post.title);
+  }
+
+  markPost(post: Post) {
+    console.log('Favorite ', post.title);
+  }
+
+  editPost(post: Post) {
+    console.log('Editing ', post.title);
+  }
+
+  addComment(post: Post) {
+    console.log('Adding comment, opening modal...');
+  }
+
+  deletePost(post: Post) {
+    console.log('Deleting post ', post.title);
+  }
   ngOnDestroy(): void {
     this.postSubs.unsubscribe();
   }

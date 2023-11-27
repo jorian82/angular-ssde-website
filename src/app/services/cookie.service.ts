@@ -12,7 +12,7 @@ export class CookieService {
 
     public parseCookies(cookies = document.cookie) {
         this.cookieStore = new Map<string, string>();
-        if (!!cookies === false) { return; }
+        if (!cookies) { return; }
         const cookiesArr = cookies.split(';');
         cookiesArr.forEach( cookie => {
             let pair = cookie.split('=');

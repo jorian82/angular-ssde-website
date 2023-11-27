@@ -3,7 +3,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { faHouse, faEnvelope, faUser, faCircleInfo, faRightFromBracket, faBlog } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
-import { AuthService } from 'src/app/services/auth.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
@@ -26,9 +25,10 @@ export class HeaderComponent implements OnInit, OnDestroy{
 
   roles: string[] = [];
   isLoggedIn: boolean = false;
+  username: string = '';
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private tokenStorage: TokenStorageService,
     private loaderService: LoaderService,
     private userService: UserService,
@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy{
   ) {
     this.loginSubscription = userService.loginState.subscribe( login => {
       this.isLoggedIn = login;
+      this.username = tokenStorage.getUser().username;
     })
   }
 
@@ -55,11 +56,11 @@ export class HeaderComponent implements OnInit, OnDestroy{
       this.isLoggedIn = false;
     });
     this.tokenStorage.signOut();
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/').then(r => null);
   }
 
   ngOnDestroy(): void {
       this.loginSubscription.unsubscribe()
   }
-  
+
 }
